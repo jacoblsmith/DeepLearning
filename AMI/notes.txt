@@ -1,0 +1,45 @@
+
+1. Choose Ubuntu 12.04 HVM Image
+2. Login 
+3. sudo apt-get update
+4. sudo apt-get upgrade
+5. sudo apt-get install python-numpy python-scipy python-dev python-pip python-nose g++ libopenblas-dev git unzip
+6. mkdir software
+7. cd software
+8. Download Anaconda (http://continuum.io/downloads) 
+    wget http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-1.7.0-Linux-x86_64.sh
+9. Download CUDA (https://developer.nvidia.com/cuda-downloads)
+    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1204/x86_64/cuda-repo-ubuntu1204_5.5-0_amd64.deb
+10. sudo dpkg -i ***.deb
+11. sudo apt-get update
+12. sudo apt-get install cuda
+13. Append Path 
+    vi .bashrc
+    PATH=/usr/local/cuda/bin:$PATH
+    LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+14. Install Anaconda Python Distro
+    bash Anaconda-<versioin>.sh
+    I installed in the user directory
+    Append anaconda to your path
+15. bash ~/.bashrc
+16. Make sure your python version  is pointing to anaconda if you are using it
+    python --version
+17. conda update conda
+    conda update anaconda
+    conda install mkl
+
+19. cd ~/software/
+20. Download Theano and Install
+    git clone git://github.com/Theano/Theano.git
+    cd Theano
+    python setup.py install
+21. Check  that Theano and the GPU can work together
+    THEANO_FLAGS=floatX=float32,device=gpu python ~/anaconda/lib/python2.7/site-packages/theano/misc/check_blas.py
+22. Set the GPU as your default 
+    vi ~/.theanorc
+    [global]
+    floatX = float32
+    device = gpu0
+    
+    [nvcc]
+    fastmath = True
