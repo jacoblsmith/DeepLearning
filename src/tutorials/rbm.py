@@ -375,7 +375,7 @@ def test_rbm(learning_rate=0.1, training_epochs=15,
     # it is ok for a theano function to have no output
     # the purpose of train_rbm is solely to update the RBM parameters
     train_rbm = theano.function([index], cost,
-           updates=updates,
+           updates=updates, 
            givens={x: train_set_x[index * batch_size:
                                   (index + 1) * batch_size]},
            name='train_rbm')
